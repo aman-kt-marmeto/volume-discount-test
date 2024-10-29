@@ -1,0 +1,32 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "32b464bde1bbe96306cad71d5c11c8dc"
+name = "Volume discount test"
+handle = "volume-discount-test-2"
+application_url = "https://thongs-australian-just-featuring.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products, write_discounts, write_discounts_allocator_functions, read_products"
+
+[auth]
+redirect_urls = [
+  "https://thongs-australian-just-featuring.trycloudflare.com/auth/callback",
+  "https://thongs-australian-just-featuring.trycloudflare.com/auth/shopify/callback",
+  "https://thongs-australian-just-featuring.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+[pos]
+embedded = false
+
+[build]
+dev_store_url = "marmeto-theme.myshopify.com"
+automatically_update_urls_on_dev = true
