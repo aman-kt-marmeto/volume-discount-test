@@ -361,3 +361,37 @@ This template uses [Remix](https://remix.run). The following Shopify tools are a
 - [App extensions](https://shopify.dev/docs/apps/app-extensions/list)
 - [Shopify Functions](https://shopify.dev/docs/api/functions)
 - [Getting started with internationalizing your app](https://shopify.dev/docs/apps/best-practices/internationalization/getting-started)
+
+
+## Create a discount using graphQL
+
+```shell
+mutation discountAutomaticAppCreate($automaticAppDiscount: DiscountAutomaticAppInput!) {
+  discountAutomaticAppCreate(automaticAppDiscount: $automaticAppDiscount) {
+    automaticAppDiscount {
+      discountId
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+```
+
+```shell
+{
+  "automaticAppDiscount": {
+    "title": "Best diwali offers!!",
+    "functionId": "7590de09-5a37-468a-9568-c6170aa959a1",
+		"startsAt": "2024-10-28T04:12:30.90",
+		"endsAt": null,
+    "metafields": {
+      "namespace": "volume-discount",
+			"key":"tiers",
+      "type": "json",
+      "value": "{\"tag\":\"volume_discount\",\"discounts\":[{\"quantity\":2,\"discount\":5,\"message\":\"15% volume discount\"},{\"quantity\":4,\"discount\":10,\"message\":\"20% volume discount\"},{\"quantity\":6,\"discount\":15,\"message\":\"25% volume discount\"}]}"
+    }
+  }
+}
+```
